@@ -21,7 +21,7 @@
   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
   	<init-param>
   		<param-name>encoding</param-name>
-  		<param-value>UTF_8</param-value>
+  		<param-value>UTF-8</param-value>
   	</init-param>
   	<init-param>
   		<param-name>forceEncoding</param-name>
@@ -36,10 +36,10 @@
   <!-- 出错跳转界面 -->
   <error-page>
   	<error-code>404</error-code>
-  	<location></location>
+  	<location>/</location>
   </error-page>
   <error-page>
   	<error-code>500</error-code>
-  	<location></location>
+  	<location>/</location>
   </error-page>
 </web-app>
