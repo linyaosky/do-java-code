@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	
+	<!-- <util:properties id="" location=""/> -->
+	
+	<!-- 定义数据源 -->
+	<bean id="ds" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="url" value="#{jdbc.url}"/>
+		<property name="driverClassName" value="#{jdbc.driver}"/>
+		<property name="username" value="#{jdbc.user}"/>
+		<property name="password" value="#{jdbc.password}"/>
+	</bean>
+	
+	<!-- 定义sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+      <property name="dataSource" ref="ds" />
+      <property name="mapperLocations" value="classpath:me/**/*.xml"/>
+      <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+    </bean>
+	
+	 <!-- 扫描DAO组件 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <property name="basePackage" value="com.me" />
+	</bean>
+    
+    
+</beans>

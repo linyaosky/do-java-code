@@ -38,15 +38,5 @@
         <setting name="jdbcTypeForNull" value="NULL"/>
 		
 	</settings>
-	
-	<!-- 类型别名 -->
-	<typeAliases>
-		<typeAlias alias="Page" type="com.thinkgem.jeesite.common.persistence.Page" /><!--分页  -->
-	</typeAliases>
-	
-	<!-- 插件配置 -->
-	<plugins>
-		<plugin interceptor="com.thinkgem.jeesite.common.persistence.interceptor.PaginationInterceptor" />
-    </plugins>
-	
+
 </configuration>
