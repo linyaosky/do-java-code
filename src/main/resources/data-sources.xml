@@ -26,10 +26,10 @@
       <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
     </bean>
 	
-	 <!-- 扫描DAO组件 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-       <property name="basePackage" value="com.me" />
-	</bean>
-    
+    <!-- 扫描basePackage下所有的接口 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <property name="basePackage" value="me.modules"/>
+    </bean>
     
 </beans>
