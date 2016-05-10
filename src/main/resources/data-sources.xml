@@ -29,7 +29,7 @@
     <!-- 扫描basePackage下所有的接口 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-        <property name="basePackage" value="me.modules"/>
+        <property name="basePackage" value="me.skyline.modules"/>
     </bean>
     
 </beans>
