@@ -1,4 +1,4 @@
-package me.skyline.modules.login;
+package me.skyline.modules.login.web;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
