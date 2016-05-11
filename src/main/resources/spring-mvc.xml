@@ -8,7 +8,7 @@
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:me.properties"/>
 	
 	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
-	<context:component-scan base-package="me.login" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
+	<context:component-scan base-package="me.skyline.modules.*.web" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	

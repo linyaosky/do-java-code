@@ -3,9 +3,9 @@ package me.skyline.modules.login.dao;
 import me.skyline.modules.login.entity.UserInfoEntity;
 
 /**
- * ÓÃ»§ĞÅÏ¢dao
+ * ç”¨æˆ·ä¿¡æ¯dao
  * @author chendh
- * 2016Äê5ÔÂ10ÈÕ
+ * 2016å¹´5æœˆ11æ—¥
  */
 public interface UserInfoDao {
 	public void insertUserInfo(UserInfoEntity user);

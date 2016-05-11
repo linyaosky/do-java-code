@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * ´¦ÀíµÇÂ¼ÇëÇó
+ * ç™»å½•æŽ§åˆ¶å™¨
  * @author chendh
- * 2016Äê5ÔÂ9ÈÕ
+ * 2016å¹´5æœˆ11æ—¥
  */
+
 @Controller
 public class LoginController {
 	
