@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" >
+  	<commentGenerator>
+             <property name="suppressDate" value="false"/>
+             <property name="suppressAllComments" value="true"/>
+  	</commentGenerator>
+  	
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+    				connectionURL="jdbc:mysql://localhost:3306/innofarm" 
+   				 	userId="root" password="102030" />
+   
+    <!-- 实体类 -->
+    <javaModelGenerator targetPackage="com.innofarms.web.filter" targetProject="innofarm" >
+    	<property name="enableSubPackages" value="true"/>
+    </javaModelGenerator>
+    
+    <!-- sql-->
+    <sqlMapGenerator targetPackage="com.innofarms.web.filter" targetProject="innofarm" >
+    	<property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+    
+    <!-- mapper接口 -->
+    <javaClientGenerator targetPackage="com.innofarms.web.filter" targetProject="innofarm" type="XMLMAPPER" >
+    	<property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+    
+    <!-- 字段映射 -->
+    <table tableName="user_info" domainObjectName="UserInfo" enableCountByExample="false" 
+    		enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+    		selectByExampleQueryId="false">
+      <columnOverride column="USER_ACNT" property="phoneNum" />
+    </table>
+    
+  </context>
+</generatorConfiguration>
