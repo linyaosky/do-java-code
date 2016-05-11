@@ -4,6 +4,7 @@
   <context id="context1" >
   	<commentGenerator>
              <property name="suppressDate" value="false"/>
+             <!-- 去除自动生成的注释 true：是 ： false:否 -->
              <property name="suppressAllComments" value="true"/>
   	</commentGenerator>
   	
