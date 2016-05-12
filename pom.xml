@@ -21,6 +21,7 @@
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<log4j.version>1.2.17</log4j.version>
 	<mysql.driver.version>5.1.30</mysql.driver.version>
+	<shiro.version>1.2.3</shiro.version>
   </properties>
   
   <dependencies>
@@ -99,6 +100,30 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis-spring.version}</version>
 		</dependency>
+		
+	<!-- SECURITY begin -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+	<!-- SECURITY end -->
+		
 	<!-- connection pool -->
 		<dependency>
 		     <groupId>com.alibaba</groupId>

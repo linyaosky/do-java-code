@@ -7,10 +7,30 @@
 	
 	<context:property-placeholder ignore-unresolvable="true" location="classpath:me.properties"/>
 	
+	<import resource="classpath:/data-sources.xml"/>
+	
 	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
 	<context:component-scan base-package="me.skyline.modules.*.web" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+
+	<!-- 支持Shiro对Controller的方法级AOP安全控制 begin-->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
 	
-	<import resource="classpath:/data-sources.xml"/>
+	
+	<!-- 上传文件拦截，设置最大上传文件大小   10M=10*1024*1024(B)=10485760 bytes -->  
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+		<property name="maxUploadSize" value="${web.maxUploadSize}" />  
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+				<prop key="java.lang.Throwable">error/500</prop>
+			</props>
+			</property>
+	</bean>
 </beans> 
