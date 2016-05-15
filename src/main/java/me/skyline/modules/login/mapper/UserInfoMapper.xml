@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.skyline.modules.login.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="me.skyline.modules.login.entity.UserInfo" >
+    <id column="USER_ID" property="userId" jdbcType="CHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="PRE_PWD" property="prePwd" jdbcType="CHAR" />
+    <result column="NOW_PWD" property="nowPwd" jdbcType="CHAR" />
+    <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR" />
+    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="CHAR" />
+    <result column="BIRTH_DAY" property="birthDay" jdbcType="DATE" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="MOBILE_NO" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="ICON_URL" property="iconUrl" jdbcType="VARCHAR" />
+    <result column="ICON_FLG" property="iconFlg" jdbcType="CHAR" />
+    <result column="ICON_WIDTH" property="iconWidth" jdbcType="INTEGER" />
+    <result column="ICON_HEIGHT" property="iconHeight" jdbcType="INTEGER" />
+    <result column="LOGIN_NUM" property="loginNum" jdbcType="INTEGER" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_LOGIN_IP_ADDR" property="lastLoginIpAddr" jdbcType="VARCHAR" />
+    <result column="IDENT" property="ident" jdbcType="VARCHAR" />
+    <result column="IDENT_PERIOD" property="identPeriod" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="ADD_DATE" property="addDate" jdbcType="TIMESTAMP" />
+    <result column="ADD_USER_ID" property="addUserId" jdbcType="VARCHAR" />
+    <result column="ADD_IP_ADDR" property="addIpAddr" jdbcType="VARCHAR" />
+    <result column="UPD_DATE" property="updDate" jdbcType="TIMESTAMP" />
+    <result column="UPD_USER_ID" property="updUserId" jdbcType="VARCHAR" />
+    <result column="UPD_IP_ADDR" property="updIpAddr" jdbcType="VARCHAR" />
+    <result column="TOKEN" property="token" jdbcType="VARCHAR" />
+    <result column="OPEN_ID" property="openId" jdbcType="VARCHAR" />
+    <result column="DEL_FLG" property="delFlg" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, EMAIL, PRE_PWD, NOW_PWD, NICK_NAME, REAL_NAME, SEX, BIRTH_DAY, COUNTRY, 
+    PROVINCE, CITY, ADDR, MOBILE_NO, ICON_URL, ICON_FLG, ICON_WIDTH, ICON_HEIGHT, LOGIN_NUM, 
+    LAST_LOGIN_TIME, LAST_LOGIN_IP_ADDR, IDENT, IDENT_PERIOD, STATUS, ADD_DATE, ADD_USER_ID, 
+    ADD_IP_ADDR, UPD_DATE, UPD_USER_ID, UPD_IP_ADDR, TOKEN, OPEN_ID, DEL_FLG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_info
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="me.skyline.modules.login.entity.UserInfo" >
+    insert into user_info (USER_ID, EMAIL, PRE_PWD, 
+      NOW_PWD, NICK_NAME, REAL_NAME, 
+      SEX, BIRTH_DAY, COUNTRY, PROVINCE, 
+      CITY, ADDR, MOBILE_NO, 
+      ICON_URL, ICON_FLG, ICON_WIDTH, 
+      ICON_HEIGHT, LOGIN_NUM, LAST_LOGIN_TIME, 
+      LAST_LOGIN_IP_ADDR, IDENT, IDENT_PERIOD, 
+      STATUS, ADD_DATE, ADD_USER_ID, 
+      ADD_IP_ADDR, UPD_DATE, UPD_USER_ID, 
+      UPD_IP_ADDR, TOKEN, OPEN_ID, 
+      DEL_FLG)
+    values (#{userId,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{prePwd,jdbcType=CHAR}, 
+      #{nowPwd,jdbcType=CHAR}, #{nickName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthDay,jdbcType=DATE}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, 
+      #{iconUrl,jdbcType=VARCHAR}, #{iconFlg,jdbcType=CHAR}, #{iconWidth,jdbcType=INTEGER}, 
+      #{iconHeight,jdbcType=INTEGER}, #{loginNum,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginIpAddr,jdbcType=VARCHAR}, #{ident,jdbcType=VARCHAR}, #{identPeriod,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=CHAR}, #{addDate,jdbcType=TIMESTAMP}, #{addUserId,jdbcType=VARCHAR}, 
+      #{addIpAddr,jdbcType=VARCHAR}, #{updDate,jdbcType=TIMESTAMP}, #{updUserId,jdbcType=VARCHAR}, 
+      #{updIpAddr,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{delFlg,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="me.skyline.modules.login.entity.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="prePwd != null" >
+        PRE_PWD,
+      </if>
+      <if test="nowPwd != null" >
+        NOW_PWD,
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME,
+      </if>
+      <if test="realName != null" >
+        REAL_NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="birthDay != null" >
+        BIRTH_DAY,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="mobileNo != null" >
+        MOBILE_NO,
+      </if>
+      <if test="iconUrl != null" >
+        ICON_URL,
+      </if>
+      <if test="iconFlg != null" >
+        ICON_FLG,
+      </if>
+      <if test="iconWidth != null" >
+        ICON_WIDTH,
+      </if>
+      <if test="iconHeight != null" >
+        ICON_HEIGHT,
+      </if>
+      <if test="loginNum != null" >
+        LOGIN_NUM,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="lastLoginIpAddr != null" >
+        LAST_LOGIN_IP_ADDR,
+      </if>
+      <if test="ident != null" >
+        IDENT,
+      </if>
+      <if test="identPeriod != null" >
+        IDENT_PERIOD,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE,
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID,
+      </if>
+      <if test="addIpAddr != null" >
+        ADD_IP_ADDR,
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE,
+      </if>
+      <if test="updUserId != null" >
+        UPD_USER_ID,
+      </if>
+      <if test="updIpAddr != null" >
+        UPD_IP_ADDR,
+      </if>
+      <if test="token != null" >
+        TOKEN,
+      </if>
+      <if test="openId != null" >
+        OPEN_ID,
+      </if>
+      <if test="delFlg != null" >
+        DEL_FLG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="prePwd != null" >
+        #{prePwd,jdbcType=CHAR},
+      </if>
+      <if test="nowPwd != null" >
+        #{nowPwd,jdbcType=CHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthDay != null" >
+        #{birthDay,jdbcType=DATE},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null" >
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconFlg != null" >
+        #{iconFlg,jdbcType=CHAR},
+      </if>
+      <if test="iconWidth != null" >
+        #{iconWidth,jdbcType=INTEGER},
+      </if>
+      <if test="iconHeight != null" >
+        #{iconHeight,jdbcType=INTEGER},
+      </if>
+      <if test="loginNum != null" >
+        #{loginNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIpAddr != null" >
+        #{lastLoginIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="ident != null" >
+        #{ident,jdbcType=VARCHAR},
+      </if>
+      <if test="identPeriod != null" >
+        #{identPeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="addIpAddr != null" >
+        #{addIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null" >
+        #{updDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserId != null" >
+        #{updUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updIpAddr != null" >
+        #{updIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlg != null" >
+        #{delFlg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="me.skyline.modules.login.entity.UserInfo" >
+    update user_info
+    <set >
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="prePwd != null" >
+        PRE_PWD = #{prePwd,jdbcType=CHAR},
+      </if>
+      <if test="nowPwd != null" >
+        NOW_PWD = #{nowPwd,jdbcType=CHAR},
+      </if>
+      <if test="nickName != null" >
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthDay != null" >
+        BIRTH_DAY = #{birthDay,jdbcType=DATE},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null" >
+        ICON_URL = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconFlg != null" >
+        ICON_FLG = #{iconFlg,jdbcType=CHAR},
+      </if>
+      <if test="iconWidth != null" >
+        ICON_WIDTH = #{iconWidth,jdbcType=INTEGER},
+      </if>
+      <if test="iconHeight != null" >
+        ICON_HEIGHT = #{iconHeight,jdbcType=INTEGER},
+      </if>
+      <if test="loginNum != null" >
+        LOGIN_NUM = #{loginNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIpAddr != null" >
+        LAST_LOGIN_IP_ADDR = #{lastLoginIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="ident != null" >
+        IDENT = #{ident,jdbcType=VARCHAR},
+      </if>
+      <if test="identPeriod != null" >
+        IDENT_PERIOD = #{identPeriod,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+      <if test="addDate != null" >
+        ADD_DATE = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserId != null" >
+        ADD_USER_ID = #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="addIpAddr != null" >
+        ADD_IP_ADDR = #{addIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null" >
+        UPD_DATE = #{updDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserId != null" >
+        UPD_USER_ID = #{updUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updIpAddr != null" >
+        UPD_IP_ADDR = #{updIpAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        OPEN_ID = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlg != null" >
+        DEL_FLG = #{delFlg,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="me.skyline.modules.login.entity.UserInfo" >
+    update user_info
+    set EMAIL = #{email,jdbcType=VARCHAR},
+      PRE_PWD = #{prePwd,jdbcType=CHAR},
+      NOW_PWD = #{nowPwd,jdbcType=CHAR},
+      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      REAL_NAME = #{realName,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=CHAR},
+      BIRTH_DAY = #{birthDay,jdbcType=DATE},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      ICON_URL = #{iconUrl,jdbcType=VARCHAR},
+      ICON_FLG = #{iconFlg,jdbcType=CHAR},
+      ICON_WIDTH = #{iconWidth,jdbcType=INTEGER},
+      ICON_HEIGHT = #{iconHeight,jdbcType=INTEGER},
+      LOGIN_NUM = #{loginNum,jdbcType=INTEGER},
+      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=TIMESTAMP},
+      LAST_LOGIN_IP_ADDR = #{lastLoginIpAddr,jdbcType=VARCHAR},
+      IDENT = #{ident,jdbcType=VARCHAR},
+      IDENT_PERIOD = #{identPeriod,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=CHAR},
+      ADD_DATE = #{addDate,jdbcType=TIMESTAMP},
+      ADD_USER_ID = #{addUserId,jdbcType=VARCHAR},
+      ADD_IP_ADDR = #{addIpAddr,jdbcType=VARCHAR},
+      UPD_DATE = #{updDate,jdbcType=TIMESTAMP},
+      UPD_USER_ID = #{updUserId,jdbcType=VARCHAR},
+      UPD_IP_ADDR = #{updIpAddr,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      OPEN_ID = #{openId,jdbcType=VARCHAR},
+      DEL_FLG = #{delFlg,jdbcType=CHAR}
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>
