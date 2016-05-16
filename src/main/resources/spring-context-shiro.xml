@@ -34,6 +34,8 @@
 		<property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /> -->
 		<property name="loginUrl" value="${adminPath}/login" />
 		<property name="successUrl" value="${adminPath}?login" />
+		<!-- 没有权限跳转的页面 -->
+		<property name="unauthorizedUrl" value="${adminPath}/login" />
 		<property name="filters">
             <map>
                 <entry key="cas" value-ref="casFilter"/>
